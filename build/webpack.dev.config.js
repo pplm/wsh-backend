@@ -31,5 +31,21 @@ module.exports = merge(webpackBaseConfig, {
             template: './src/template/index.ejs',
             inject: false
         })
-    ]
+    ],
+	devServer: {
+        historyApiFallback: true,
+        hot: true,
+        inline: true,
+        stats: { colors: true },
+        proxy: {
+            //匹配代理的url
+            '/api': {
+            // 目标服务器地址
+              target: 'http://115.29.76.68',
+              //路径重写
+              pathRewrite: {'^/api' : '/CCP'},
+              changeOrigin: true
+            }
+         }
+    }
 });
