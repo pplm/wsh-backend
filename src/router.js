@@ -60,7 +60,8 @@ export const otherRouter = {
         { path: 'ownspace', title: '个人中心', name: 'ownspace_index', component: resolve => { require(['./views/own-space/own-space.vue'], resolve); } },
         { path: 'ownspace/:username', title: '带参个人中心', name: 'ownspace_with_name', component: resolve => { require(['./views/own-space/own-space.vue'], resolve); } },  // 用于展示带参路由
         { path: 'order/:order_id', title: '订单详情', name: 'order_info', component: resolve => { require(['./views/argument-page/order-info.vue'], resolve); } },  // 用于展示带参路由
-        { path: 'message', title: '消息中心', name: 'message_index', component: resolve => { require(['./views/message/message.vue'], resolve); } }
+        { path: 'message', title: '消息中心', name: 'message_index', component: resolve => { require(['./views/message/message.vue'], resolve); } },
+        { path: 'memberDetail/:id', title: '会员详情', name: 'member_detail', component: resolve => { require(['./views/member/memberDetail.vue'], resolve); } }
     ]
 };
 
@@ -94,6 +95,16 @@ export const appRouter = [
         component: Main,
         children: [
             { path: 'circleManagement', title: '圈子管理', name: 'circle_management', component: resolve => { require(['./views/circle/circle.vue'], resolve); } }
+        ]
+    },
+    {
+        path: '/goods',
+        icon: 'person-stalker',
+        title: '物品管理',
+        name: 'goodsManagement',
+        component: Main,
+        children: [
+            { path: 'goodsManagement', title: '圈子管理', name: 'goods_management', component: resolve => { require(['./views/goods/goods.vue'], resolve); } }
         ]
     },
 /*    

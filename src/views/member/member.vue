@@ -4,34 +4,31 @@
         <Row>
             <Col span="6" style="margin-bottom: -15px;">
                 <FormItem label="昵称" prop="nick_name">
-                    <Input type="text" v-model="saveForm.nick_name" placeholder="请输入昵称"></Input>
+                    <Input type="text" v-model="queryForm.nick_name" placeholder="请输入昵称"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
                 <FormItem label="手机号" prop="mobile">
-                    <Input type="text" v-model="saveForm.mobile" placeholder="请输入手机号"></Input>
+                    <Input type="text" v-model="queryForm.mobile" placeholder="请输入手机号"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
                 <FormItem label="城市" prop="CityName">
-                    <Input type="text" v-model="saveForm.CityName" placeholder="请输入城市"></Input>
+                    <Input type="text" v-model="queryForm.CityName" placeholder="请输入城市"></Input>
                 </FormItem>
             </Col>
         </Row>
         <Row>    
             <Col span="6" style="margin-bottom: -15px;">
                 <FormItem label="用户状态" prop="frozen_flag">
-                    <Input type="text" v-model="saveForm.frozen_flag" placeholder="请输入是否冻结"></Input>
+                    <Select v-model="queryForm.frozen_flag" clearable placeholder="请选择用户状态" style="width:174px">
+                        <Option v-for="item in dict.frozen_flagList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                    </Select>
                 </FormItem>
             </Col>
-            <Col span="6" style="margin-bottom: -15px;">
+            <Col span="12" style="margin-bottom: -15px;">
                 <FormItem label="注册时间" prop="CreatedAtStart">
-                    <Input type="text" v-model="saveForm.CreatedAtStart" placeholder="注册时间开始"></Input>
-                </FormItem>
-            </Col>
-            <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="注册时间" prop="CreatedAtEnd">
-                    <Input type="text" v-model="saveForm.CreatedAtEnd" placeholder="注册时间开始"></Input>
+                <DatePicker :value="queryForm.created_at" format="yyyy/MM/dd" type="daterange" placement="bottom-end" placeholder="请选择注册时间" style="width: 200px"></DatePicker>
                 </FormItem>
             </Col>
         </Row>
@@ -40,7 +37,7 @@
                 <FormItem>
                     <Button type="primary" icon="android-search" @click="doQuery">查询</Button>
                     <Button type="error" icon="android-refresh" @click="doClear">清空</Button>
-                    <Button type="success" icon="archive">导出</Button>
+                    <Button type="success" icon="archive" @click="doExport">导出</Button>
                 </FormItem>
             </Col>
         </Row>
@@ -71,6 +68,7 @@ import util from '@/libs/util';
 export default {
     data () {
         return {
+            tableExcel: {},
             saveModal: {
                 show: false,
                 title: ''
@@ -89,7 +87,7 @@ export default {
                 level_name: '',
                 score: '',
                 coin: '',
-                created_at: ''
+                created_at: []
             },
             saveForm: {
                 id: '',
@@ -199,15 +197,15 @@ export default {
                                       marginRight: '5px'
                                 },
                                 on: {
-                                      click: () => {
-                                         let argu = { order_id: params.row.order_id }
-                                           //util.openNewPage(this, 'order_info', argu);
-                                           this.$router.push({
-                                               name: 'order_info',
-                                               params: argu
-                                           })
-                                       }
-                                   }
+                                    click: () => {
+                                        this.$router.push({
+                                            name: 'member_detail',
+                                            params: {
+                                                id: params.row.id
+                                            }
+                                        })
+                                    }
+                                }
                             }, '详情'),
                             h('Button', {
                                 props: {
@@ -244,6 +242,18 @@ export default {
                 }
             ],
             tableData: [],
+            dict: {
+                frozen_flagList: [
+                    {
+                        label: "解冻",
+                        value: 0
+                    },
+                    {
+                        label: "冻结",
+                        value: 1
+                    }
+                ]
+            },
             page: {
                 total: 0,
                 size: 10,
@@ -277,7 +287,7 @@ export default {
             this.queryForm.level_name = ''
             this.queryForm.score = ''
             this.queryForm.coin = ''
-            this.queryForm.created_at = ''
+            this.queryForm.created_at = []
             this.doQuery()
         },
         doSave () {
@@ -313,9 +323,26 @@ export default {
                 }
             })
         },
+        doExport () {
+            let _self = this
+            util.ajax.post('/MemberManagement/ExportMember', this.processQueryForm()).then(function (res) {
+                if (res.status === 200) {
+                    if (res.data.result === 1) {
+                        window.open(res.data.content)
+                    } else {
+                        _self.$Message.error(res.data.message)
+                    }
+                }
+            }).catch(function (err) {
+                console.log(err)
+            })
+        },
+        processQueryForm () {
+            return this.queryForm
+        },
         getList () {
             let _self = this
-            util.ajax.get('/MemberManagement/MemberList?page=' + this.page.current + '&limit=' + this.page.size).then(function (res) {
+            util.ajax.get('/MemberManagement/MemberList?page=' + this.page.current + '&limit=' + this.page.size, {params: this.processQueryForm()}).then(res => {
                 console.log(res)
                 if (res.status === 200) {
                     if (res.data.result === 1) {
@@ -336,7 +363,7 @@ export default {
         },
         showModalUpdate(id) {
             let _self = this
-            util.ajax.get('/MemberManagement/MemberList/detail?id=' + id).then(function (res) {
+            util.ajax.get('/MemberManagement/MemberList/detail?id=' + id).then(res => {
                 if (res.status === 200) {
                     if (res.data.code === "0") {
                         _self.saveForm = res.data.data
@@ -344,7 +371,7 @@ export default {
                 }
             }).catch(function (error) {
                 console.log(error)
-              })
+            })
             this.saveModal.show = true
             this.saveModal.title = '修改功能'
         },

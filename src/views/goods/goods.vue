@@ -3,90 +3,79 @@
     <Form :model="queryForm" :label-width="80">
         <Row>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="始发地" prop="thjorgard">
-                    <Input type="text" v-model="queryForm.thjorgard"></Input>
+                <FormItem label="代理商" prop="agentName">
+                    <Input type="text" v-model="queryForm.agentName"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="目的地" prop="destination">
-                    <Input type="text" v-model="queryForm.destination"></Input>
+                <FormItem label="物品名称" prop="name">
+                    <Input type="text" v-model="queryForm.name"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="顺风车消息" prop="user_type">
-                    <Select v-model="queryForm.user_type" clearable placeholder="请选择user_type" style="width:174px">
-                        <Option v-for="item in dict.user_type" :value="item.value" :key="item.value">{{ item.label }}</Option>
-                    </Select>
+                <FormItem label="物品价格" prop="price">
+                    <Input type="text" v-model="queryForm.price"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="顺风车消息" prop="user_type_name">
-                    <Input type="text" v-model="queryForm.user_type_name"></Input>
+                <FormItem label="物品描述" prop="desc">
+                    <Input type="text" v-model="queryForm.desc"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="圈子ID" prop="circle_id">
-                    <Select v-model="queryForm.circle_id" clearable placeholder="请选择circle_id" style="width:174px">
-                        <Option v-for="item in dict.circle_id" :value="item.value" :key="item.value">{{ item.label }}</Option>
-                    </Select>
+                <FormItem label="物品图片地址" prop="files">
+                    <Input type="text" v-model="queryForm.files"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="圈子名称" prop="circle_name">
+                <FormItem label="圈子" prop="circle_name">
                     <Input type="text" v-model="queryForm.circle_name"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="运输类型" prop="traffic_type">
-                    <Select v-model="queryForm.traffic_type" clearable placeholder="请选择traffic_type" style="width:174px">
-                        <Option v-for="item in dict.traffic_type" :value="item.value" :key="item.value">{{ item.label }}</Option>
-                    </Select>
+                <FormItem label="城市" prop="CityName">
+                    <Input type="text" v-model="queryForm.CityName"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="运输类型" prop="traffic_type_name">
-                    <Input type="text" v-model="queryForm.traffic_type_name"></Input>
+                <FormItem label="县区" prop="CountyName">
+                    <Input type="text" v-model="queryForm.CountyName"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="费用" prop="cost">
-                    <Input type="text" v-model="queryForm.cost"></Input>
+                <FormItem label="镇" prop="TownName">
+                    <Input type="text" v-model="queryForm.TownName"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="发布人id" prop="user_id">
-                    <Input type="text" v-model="queryForm.user_id"></Input>
+                <FormItem label="会员名称" prop="memberName">
+                    <Input type="text" v-model="queryForm.memberName"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="发布人名称" prop="user_name">
-                    <Input type="text" v-model="queryForm.user_name"></Input>
-                </FormItem>
-            </Col>
-            <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="用户头像地址" prop="user_avatar_url">
-                    <Input type="text" v-model="queryForm.user_avatar_url"></Input>
-                </FormItem>
-            </Col>
-            <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="发车时间" prop="depart_at">
-                    <DatePicker :value="queryForm.depart_at" format="yyyy/MM/dd" type="daterange" placement="bottom-end" placeholder="请选择发车时间" style="width: 200px"></DatePicker>
-                </FormItem>
-            </Col>
-            <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="状态" prop="state_id">
+                <FormItem label="物品状态" prop="state_id">
                     <Select v-model="queryForm.state_id" clearable placeholder="请选择state_id" style="width:174px">
                         <Option v-for="item in dict.state_id" :value="item.value" :key="item.value">{{ item.label }}</Option>
                     </Select>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="状态名称" prop="state_name">
+                <FormItem label="物品状态名称" prop="state_name">
                     <Input type="text" v-model="queryForm.state_name"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="是否首页" prop="homepage_flag">
+                <FormItem label="上架时间" prop="putaway_date">
+                    <DatePicker :value="queryForm.putaway_date" format="yyyy/MM/dd" type="daterange" placement="bottom-end" placeholder="请选择上架时间" style="width: 200px"></DatePicker>
+                </FormItem>
+            </Col>
+            <Col span="6" style="margin-bottom: -15px;">
+                <FormItem label="下架时间" prop="sold_out_date">
+                    <DatePicker :value="queryForm.sold_out_date" format="yyyy/MM/dd" type="daterange" placement="bottom-end" placeholder="请选择下架时间" style="width: 200px"></DatePicker>
+                </FormItem>
+            </Col>
+            <Col span="6" style="margin-bottom: -15px;">
+                <FormItem label="首页显示" prop="homepage_flag">
                     <Select v-model="queryForm.homepage_flag" clearable placeholder="请选择homepage_flag" style="width:174px">
                         <Option v-for="item in dict.homepage_flag" :value="item.value" :key="item.value">{{ item.label }}</Option>
                     </Select>
@@ -100,31 +89,24 @@
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="是否上下架" prop="putaway_flag_name">
+                <FormItem label="是否上下架名称" prop="putaway_flag_name">
                     <Input type="text" v-model="queryForm.putaway_flag_name"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="载客数量" prop="passenger_count">
-                    <Input type="text" v-model="queryForm.passenger_count"></Input>
+                <FormItem label="会员id" prop="memberID">
+                    <Input type="text" v-model="queryForm.memberID"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="行程描述" prop="desc">
-                    <Input type="text" v-model="queryForm.desc"></Input>
+                <FormItem label="会员头像url" prop="memberAvatarUrl">
+                    <Input type="text" v-model="queryForm.memberAvatarUrl"></Input>
                 </FormItem>
             </Col>
             <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="本圈是否上架" prop="is_on">
-                    <Select v-model="queryForm.is_on" clearable placeholder="请选择is_on" style="width:174px">
-                        <Option v-for="item in dict.is_on" :value="item.value" :key="item.value">{{ item.label }}</Option>
-                    </Select>
-                </FormItem>
-            </Col>
-            <Col span="6" style="margin-bottom: -15px;">
-                <FormItem label="是否首页展示" prop="homepage_flag">
-                    <Select v-model="queryForm.homepage_flag" clearable placeholder="请选择homepage_flag" style="width:174px">
-                        <Option v-for="item in dict.homepage_flag" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                <FormItem label="本圈上架状态" prop="isPutOn">
+                    <Select v-model="queryForm.isPutOn" clearable placeholder="请选择isPutOn" style="width:174px">
+                        <Option v-for="item in dict.isPutOn" :value="item.value" :key="item.value">{{ item.label }}</Option>
                     </Select>
                 </FormItem>
             </Col>
@@ -144,83 +126,78 @@
         <Form :model="saveForm" :label-width="80" >
         <Row>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="始发地" prop="thjorgard">
-                    <Input type="text" v-model="saveForm.thjorgard" placeholder="请输入始发地"></Input>
+                <FormItem label="代理商" prop="agentName">
+                    <Input type="text" v-model="saveForm.agentName" placeholder="请输入代理商"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="目的地" prop="destination">
-                    <Input type="text" v-model="saveForm.destination" placeholder="请输入目的地"></Input>
+                <FormItem label="物品名称" prop="name">
+                    <Input type="text" v-model="saveForm.name" placeholder="请输入物品名称"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="顺风车消息" prop="user_type">
-                    <Input type="text" v-model="saveForm.user_type" placeholder="请输入顺风车消息"></Input>
+                <FormItem label="物品价格" prop="price">
+                    <Input type="text" v-model="saveForm.price" placeholder="请输入物品价格"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="顺风车消息" prop="user_type_name">
-                    <Input type="text" v-model="saveForm.user_type_name" placeholder="请输入顺风车消息"></Input>
+                <FormItem label="物品描述" prop="desc">
+                    <Input type="text" v-model="saveForm.desc" placeholder="请输入物品描述"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="圈子ID" prop="circle_id">
-                    <Input type="text" v-model="saveForm.circle_id" placeholder="请输入圈子ID"></Input>
+                <FormItem label="物品图片地址" prop="files">
+                    <Input type="text" v-model="saveForm.files" placeholder="请输入物品图片地址"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="圈子名称" prop="circle_name">
-                    <Input type="text" v-model="saveForm.circle_name" placeholder="请输入圈子名称"></Input>
+                <FormItem label="圈子" prop="circle_name">
+                    <Input type="text" v-model="saveForm.circle_name" placeholder="请输入圈子"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="运输类型" prop="traffic_type">
-                    <Input type="text" v-model="saveForm.traffic_type" placeholder="请输入运输类型"></Input>
+                <FormItem label="城市" prop="CityName">
+                    <Input type="text" v-model="saveForm.CityName" placeholder="请输入城市"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="运输类型" prop="traffic_type_name">
-                    <Input type="text" v-model="saveForm.traffic_type_name" placeholder="请输入运输类型"></Input>
+                <FormItem label="县区" prop="CountyName">
+                    <Input type="text" v-model="saveForm.CountyName" placeholder="请输入县区"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="费用" prop="cost">
-                    <Input type="text" v-model="saveForm.cost" placeholder="请输入费用"></Input>
+                <FormItem label="镇" prop="TownName">
+                    <Input type="text" v-model="saveForm.TownName" placeholder="请输入镇"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="发布人id" prop="user_id">
-                    <Input type="text" v-model="saveForm.user_id" placeholder="请输入发布人id"></Input>
+                <FormItem label="会员名称" prop="memberName">
+                    <Input type="text" v-model="saveForm.memberName" placeholder="请输入会员名称"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="发布人名称" prop="user_name">
-                    <Input type="text" v-model="saveForm.user_name" placeholder="请输入发布人名称"></Input>
+                <FormItem label="物品状态" prop="state_id">
+                    <Input type="text" v-model="saveForm.state_id" placeholder="请输入物品状态"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="用户头像地址" prop="user_avatar_url">
-                    <Input type="text" v-model="saveForm.user_avatar_url" placeholder="请输入用户头像地址"></Input>
+                <FormItem label="物品状态名称" prop="state_name">
+                    <Input type="text" v-model="saveForm.state_name" placeholder="请输入物品状态名称"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="发车时间" prop="depart_at">
-                    <Input type="text" v-model="saveForm.depart_at" placeholder="请输入发车时间"></Input>
+                <FormItem label="上架时间" prop="putaway_date">
+                    <Input type="text" v-model="saveForm.putaway_date" placeholder="请输入上架时间"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="状态" prop="state_id">
-                    <Input type="text" v-model="saveForm.state_id" placeholder="请输入状态"></Input>
+                <FormItem label="下架时间" prop="sold_out_date">
+                    <Input type="text" v-model="saveForm.sold_out_date" placeholder="请输入下架时间"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="状态名称" prop="state_name">
-                    <Input type="text" v-model="saveForm.state_name" placeholder="请输入状态名称"></Input>
-                </FormItem>
-            </Col>
-            <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="是否首页" prop="homepage_flag">
-                    <Input type="text" v-model="saveForm.homepage_flag" placeholder="请输入是否首页"></Input>
+                <FormItem label="首页显示" prop="homepage_flag">
+                    <Input type="text" v-model="saveForm.homepage_flag" placeholder="请输入首页显示"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
@@ -229,28 +206,23 @@
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="是否上下架" prop="putaway_flag_name">
-                    <Input type="text" v-model="saveForm.putaway_flag_name" placeholder="请输入是否上下架"></Input>
+                <FormItem label="是否上下架名称" prop="putaway_flag_name">
+                    <Input type="text" v-model="saveForm.putaway_flag_name" placeholder="请输入是否上下架名称"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="载客数量" prop="passenger_count">
-                    <Input type="text" v-model="saveForm.passenger_count" placeholder="请输入载客数量"></Input>
+                <FormItem label="会员id" prop="memberID">
+                    <Input type="text" v-model="saveForm.memberID" placeholder="请输入会员id"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="行程描述" prop="desc">
-                    <Input type="text" v-model="saveForm.desc" placeholder="请输入行程描述"></Input>
+                <FormItem label="会员头像url" prop="memberAvatarUrl">
+                    <Input type="text" v-model="saveForm.memberAvatarUrl" placeholder="请输入会员头像url"></Input>
                 </FormItem>
             </Col>
             <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="本圈是否上架" prop="is_on">
-                    <Input type="text" v-model="saveForm.is_on" placeholder="请输入本圈是否上架"></Input>
-                </FormItem>
-            </Col>
-            <Col span="10" style="margin-bottom: -15px;">
-                <FormItem label="是否首页展示" prop="homepage_flag">
-                    <Input type="text" v-model="saveForm.homepage_flag" placeholder="请输入是否首页展示"></Input>
+                <FormItem label="本圈上架状态" prop="isPutOn">
+                    <Input type="text" v-model="saveForm.isPutOn" placeholder="请输入本圈上架状态"></Input>
                 </FormItem>
             </Col>
         </Row>
@@ -276,153 +248,143 @@ export default {
                 title: ''
             },
             queryForm: {
-                thjorgard: '',
-                destination: '',
-                user_type: '',
-                user_type_name: '',
-                circle_id: '',
+                agentName: '',
+                name: '',
+                price: '',
+                desc: '',
+                files: '',
                 circle_name: '',
-                traffic_type: '',
-                traffic_type_name: '',
-                cost: '',
-                user_id: '',
-                user_name: '',
-                user_avatar_url: '',
-                depart_at: [],
+                CityName: '',
+                CountyName: '',
+                TownName: '',
+                memberName: '',
                 state_id: '',
                 state_name: '',
+                putaway_date: [],
+                sold_out_date: [],
                 homepage_flag: '',
                 putaway_flag: '',
                 putaway_flag_name: '',
-                passenger_count: '',
-                desc: '',
-                is_on: '',
-                homepage_flag: ''
+                memberID: '',
+                memberAvatarUrl: '',
+                isPutOn: ''
             },
             saveForm: {
                 id: '',
-                thjorgard: '',
-                destination: '',
-                user_type: '',
-                user_type_name: '',
-                circle_id: '',
+                agentName: '',
+                name: '',
+                price: '',
+                desc: '',
+                files: '',
                 circle_name: '',
-                traffic_type: '',
-                traffic_type_name: '',
-                cost: '',
-                user_id: '',
-                user_name: '',
-                user_avatar_url: '',
-                depart_at: '',
+                CityName: '',
+                CountyName: '',
+                TownName: '',
+                memberName: '',
                 state_id: '',
                 state_name: '',
+                putaway_date: '',
+                sold_out_date: '',
                 homepage_flag: '',
                 putaway_flag: '',
                 putaway_flag_name: '',
-                passenger_count: '',
-                desc: '',
-                is_on: '',
-                homepage_flag: ''
+                memberID: '',
+                memberAvatarUrl: '',
+                isPutOn: ''
             },
             columnsList:[
                 {
-                    title: '系统id',
+                    title: '内部id',
                     key: 'id',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '始发地',
-                    key: 'thjorgard',
+                    title: '代理商',
+                    key: 'agentName',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '目的地',
-                    key: 'destination',
+                    title: '物品名称',
+                    key: 'name',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '顺风车消息',
-                    key: 'user_type',
+                    title: '物品价格',
+                    key: 'price',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '顺风车消息',
-                    key: 'user_type_name',
+                    title: '物品描述',
+                    key: 'desc',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '圈子ID',
-                    key: 'circle_id',
+                    title: '物品图片地址',
+                    key: 'files',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '圈子名称',
+                    title: '圈子',
                     key: 'circle_name',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '运输类型',
-                    key: 'traffic_type',
+                    title: '城市',
+                    key: 'CityName',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '运输类型',
-                    key: 'traffic_type_name',
+                    title: '县区',
+                    key: 'CountyName',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '费用',
-                    key: 'cost',
+                    title: '镇',
+                    key: 'TownName',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '发布人id',
-                    key: 'user_id',
+                    title: '会员名称',
+                    key: 'memberName',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '发布人名称',
-                    key: 'user_name',
-                    width: 150,
-                    align: 'center'
-                },
-                {
-                    title: '用户头像地址',
-                    key: 'user_avatar_url',
-                    width: 150,
-                    align: 'center'
-                },
-                {
-                    title: '发车时间',
-                    key: 'depart_at',
-                    width: 150,
-                    align: 'center'
-                },
-                {
-                    title: '状态',
+                    title: '物品状态',
                     key: 'state_id',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '状态名称',
+                    title: '物品状态名称',
                     key: 'state_name',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '是否首页',
+                    title: '上架时间',
+                    key: 'putaway_date',
+                    width: 150,
+                    align: 'center'
+                },
+                {
+                    title: '下架时间',
+                    key: 'sold_out_date',
+                    width: 150,
+                    align: 'center'
+                },
+                {
+                    title: '首页显示',
                     key: 'homepage_flag',
                     width: 150,
                     align: 'center'
@@ -434,32 +396,26 @@ export default {
                     align: 'center'
                 },
                 {
-                    title: '是否上下架',
+                    title: '是否上下架名称',
                     key: 'putaway_flag_name',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '载客数量',
-                    key: 'passenger_count',
+                    title: '会员id',
+                    key: 'memberID',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '行程描述',
-                    key: 'desc',
+                    title: '会员头像url',
+                    key: 'memberAvatarUrl',
                     width: 150,
                     align: 'center'
                 },
                 {
-                    title: '本圈是否上架',
-                    key: 'is_on',
-                    width: 150,
-                    align: 'center'
-                },
-                {
-                    title: '是否首页展示',
-                    key: 'homepage_flag',
+                    title: '本圈上架状态',
+                    key: 'isPutOn',
                     width: 150,
                     align: 'center'
                 },
@@ -547,33 +503,31 @@ export default {
             this.getList()
         },
         doClear () {
-            this.queryForm.thjorgard = ''
-            this.queryForm.destination = ''
-            this.queryForm.user_type = ''
-            this.queryForm.user_type_name = ''
-            this.queryForm.circle_id = ''
+            this.queryForm.agentName = ''
+            this.queryForm.name = ''
+            this.queryForm.price = ''
+            this.queryForm.desc = ''
+            this.queryForm.files = ''
             this.queryForm.circle_name = ''
-            this.queryForm.traffic_type = ''
-            this.queryForm.traffic_type_name = ''
-            this.queryForm.cost = ''
-            this.queryForm.user_id = ''
-            this.queryForm.user_name = ''
-            this.queryForm.user_avatar_url = ''
-            this.queryForm.depart_at = []
+            this.queryForm.CityName = ''
+            this.queryForm.CountyName = ''
+            this.queryForm.TownName = ''
+            this.queryForm.memberName = ''
             this.queryForm.state_id = ''
             this.queryForm.state_name = ''
+            this.queryForm.putaway_date = []
+            this.queryForm.sold_out_date = []
             this.queryForm.homepage_flag = ''
             this.queryForm.putaway_flag = ''
             this.queryForm.putaway_flag_name = ''
-            this.queryForm.passenger_count = ''
-            this.queryForm.desc = ''
-            this.queryForm.is_on = ''
-            this.queryForm.homepage_flag = ''
+            this.queryForm.memberID = ''
+            this.queryForm.memberAvatarUrl = ''
+            this.queryForm.isPutOn = ''
             this.doQuery()
         },
         doSave () {
             let _self = this;
-            util.ajax.post('/CarpoolManagement/CarpoolList/save', this.saveForm).then(res => {
+            util.ajax.post('/GoodManagement/save', this.saveForm).then(res => {
                 _self.saveModal.show = false
                 _self.$Message.info('操作成功')
                 _self.doQuery()
@@ -589,7 +543,7 @@ export default {
                 loading: true,
                 onOk: () => {
                     let _modal = this.$Modal
-                    util.ajax.post('/CarpoolManagement/CarpoolList/delete/' + id).then(res => {
+                    util.ajax.post('/GoodManagement/delete/' + id).then(res => {
                         _modal.remove()
                         if (res.status === 200) {
                             if (res.data.code === "0") {
@@ -606,7 +560,7 @@ export default {
         },
         doExport () {
             let _self = this
-            util.ajax.post('/CarpoolManagement/CarpoolList/Export', this.processQueryForm()).then(res => {
+            util.ajax.post('/GoodManagement/Export', this.processQueryForm()).then(res => {
                 if (res.status === 200) {
                     if (res.data.result === 1) {
                         window.open(res.data.content)
@@ -620,7 +574,7 @@ export default {
         },
         getList () {
             let _self = this
-            util.ajax.get('/CarpoolManagement/CarpoolList?page=' + this.page.current + '&limit=' + this.page.size, {params: this.processQueryForm()}).then(res => {
+            util.ajax.get('/GoodManagement?page=' + this.page.current + '&limit=' + this.page.size, {params: this.processQueryForm()}).then(res => {
                 if (res.status === 200) {
                     if (res.data.result === 1) {
                         _self.tableData = res.data.content.data
@@ -638,12 +592,12 @@ export default {
         },
         showModalAdd() {
             this.clearSaveForm()
-            this.saveModal.title = '添加顺风车基本信息列表'
+            this.saveModal.title = '添加[C01F07]物品管理后台'
             this.saveModal.show = true
         },
         showModalUpdate(id) {
             let _self = this
-            util.ajax.get('/CarpoolManagement/CarpoolList/detail?id=' + id).then(res => {
+            util.ajax.get('/GoodManagement/detail?id=' + id).then(res => {
                 if (res.status === 200) {
                     if (res.data.code === "0") {
                         _self.saveForm = res.data.data
@@ -653,32 +607,30 @@ export default {
                 console.log(err)
               })
             this.saveModal.show = true
-            this.saveModal.title = '修改顺风车基本信息列表'
+            this.saveModal.title = '修改[C01F07]物品管理后台'
         },
         clearSaveForm () {
             this.saveForm.id = ''
-            this.saveForm.thjorgard = ''
-            this.saveForm.destination = ''
-            this.saveForm.user_type = ''
-            this.saveForm.user_type_name = ''
-            this.saveForm.circle_id = ''
+            this.saveForm.agentName = ''
+            this.saveForm.name = ''
+            this.saveForm.price = ''
+            this.saveForm.desc = ''
+            this.saveForm.files = ''
             this.saveForm.circle_name = ''
-            this.saveForm.traffic_type = ''
-            this.saveForm.traffic_type_name = ''
-            this.saveForm.cost = ''
-            this.saveForm.user_id = ''
-            this.saveForm.user_name = ''
-            this.saveForm.user_avatar_url = ''
-            this.saveForm.depart_at = ''
+            this.saveForm.CityName = ''
+            this.saveForm.CountyName = ''
+            this.saveForm.TownName = ''
+            this.saveForm.memberName = ''
             this.saveForm.state_id = ''
             this.saveForm.state_name = ''
+            this.saveForm.putaway_date = ''
+            this.saveForm.sold_out_date = ''
             this.saveForm.homepage_flag = ''
             this.saveForm.putaway_flag = ''
             this.saveForm.putaway_flag_name = ''
-            this.saveForm.passenger_count = ''
-            this.saveForm.desc = ''
-            this.saveForm.is_on = ''
-            this.saveForm.homepage_flag = ''
+            this.saveForm.memberID = ''
+            this.saveForm.memberAvatarUrl = ''
+            this.saveForm.isPutOn = ''
         },
         clearPage () {
             this.page.size = 10
